@@ -1,4 +1,7 @@
 Niceneighbor::Application.routes.draw do
+  match 'voice' => 'twilio#voice'
+  match 'sms' => 'twilio#sms'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
