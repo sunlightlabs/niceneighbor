@@ -11,9 +11,6 @@ gem 'rails', '3.0.10'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-gem 'ruby-debug19', :require => 'ruby-debug'
-
 # Bundle the extra gems:
 gem 'devise'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.0'
@@ -27,6 +24,7 @@ gem 'carrierwave'
 group :development, :test do
   gem 'webrat'
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 # Production environment
