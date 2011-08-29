@@ -1,4 +1,6 @@
 Niceneighbor::Application.routes.draw do
+  devise_for :users
+
   match 'voice' => 'twilio#voice'
   match 'sms' => 'twilio#sms'
 
