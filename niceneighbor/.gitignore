@@ -1,0 +1,12 @@
+/db/*.sqlite3
+/log/*.log
+/tmp/**/*
+/tmp/*
+/vendor/gems
+/vendor/bundle
+/vendor/ruby
+/config/*.yml
+/bin
+/.bundle
+/config/initializers/mailer.rb
+
