@@ -12,9 +12,6 @@ development:
   adapter: sqlite3
   encoding: unicode
   database: db/niceneighbor_development.sqlite3
-  # pool: 5
-  # username:
-  # password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -38,9 +35,6 @@ test:
   adapter: sqlite3
   encoding: unicode
   database: db/niceneighbor_test.sqlite3
-  # pool: 5
-  # username: niceneighbor
-  # password:
 
 production:
   adapter: postgresql
