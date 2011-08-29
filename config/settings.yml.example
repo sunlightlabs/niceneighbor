@@ -1,3 +1,2 @@
-:rails_admin:
-  :username: 'leafpeepers'
-  :password: 'cascaitdangi'
+RAILS_ADMIN_USERNAME: 'test'
+RAILS_ADMIN_PASSWORD: 'test'
