@@ -1,4 +1,4 @@
-settings = (YAML.load_file "#{Rails.root}/config/settings.yml") || ENV
+settings = (YAML.load_file "#{Rails.root}/config/settings.yml") rescue ENV
 
 RailsAdmin.config do |config|
   config.authenticate_with do
