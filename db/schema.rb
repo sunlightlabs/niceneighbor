@@ -11,7 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829170244) do
+ActiveRecord::Schema.define(:version => 20110829195737) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title",         :limit => 140
+    t.string   "slug",          :limit => 28
+    t.text     "summary"
+    t.string   "location"
+    t.string   "city",          :limit => 50
+    t.string   "state",         :limit => 2
+    t.string   "zip",           :limit => 10
+    t.boolean  "active"
+    t.integer  "activity_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["activity_type"], :name => "index_activities_on_activity_type"
+  add_index "activities", ["city"], :name => "index_activities_on_city"
+  add_index "activities", ["location"], :name => "index_activities_on_location"
+  add_index "activities", ["slug"], :name => "index_activities_on_slug", :unique => true
+  add_index "activities", ["state"], :name => "index_activities_on_state"
+  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
+  add_index "activities", ["zip"], :name => "index_activities_on_zip"
+
+  create_table "messages", :force => true do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["activity_id"], :name => "index_messages_on_activity_id"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.string   "message"
@@ -26,6 +60,23 @@ ActiveRecord::Schema.define(:version => 20110829170244) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -39,9 +90,24 @@ ActiveRecord::Schema.define(:version => 20110829170244) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username",               :limit => 16
+    t.integer  "phone",                  :limit => 10
+    t.boolean  "voice_only"
+    t.string   "profession"
+    t.text     "profile"
+    t.string   "location"
+    t.string   "city",                   :limit => 50
+    t.string   "state",                  :limit => 2
+    t.string   "zip",                    :limit => 10
+    t.boolean  "generalize_location"
   end
 
+  add_index "users", ["city"], :name => "index_users_on_city"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["phone"], :name => "index_users_on_phone", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["state"], :name => "index_users_on_state"
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+  add_index "users", ["zip"], :name => "index_users_on_zip"
 
 end
