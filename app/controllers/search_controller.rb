@@ -1,11 +1,14 @@
 class SearchController < ApplicationController
 
-  def by_activity
-    render 'results'
-  end
+  def results
+    @loc = params[:location] || session['geo_location'] || settings['GEOCODER_DEFAULT_LOCATION']
+    @distance = params[:distance] || settings['GEOCODER_DEFAULT_DISTANCE']
+    @type = params[:activity] == 'need' ? 'Have' : 'Need'
+    @query = params[:query]
+    @activities = Activity.within(@distance, :origin => @loc).where('title LIKE ? AND type=?', "%#{@query}%", @type)
+    @error = "No requests found matching '#{@query}' near #{@loc}"
 
-  def by_activity_for_location
-    render 'results_by_location'
+    render 'results'
   end
 
 end

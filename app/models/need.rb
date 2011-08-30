@@ -1,0 +1,2 @@
+class Need < Activity
+end

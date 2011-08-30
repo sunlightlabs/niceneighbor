@@ -10,6 +10,7 @@ class Neighborhood < ActiveRecord::Base
   validates_presence_of :created_by
 
   private
+
   def geocode_address
     geo = Geokit::Geocoders::MultiGeocoder.geocode("#{self.name}")
     if geo.success

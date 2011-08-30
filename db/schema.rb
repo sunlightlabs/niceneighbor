@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830172849) do
+ActiveRecord::Schema.define(:version => 20110830191351) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -26,12 +26,17 @@ ActiveRecord::Schema.define(:version => 20110830172849) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "activities", ["city"], :name => "index_activities_on_city"
+  add_index "activities", ["lat"], :name => "index_activities_on_lat"
+  add_index "activities", ["lng"], :name => "index_activities_on_lng"
   add_index "activities", ["location"], :name => "index_activities_on_location"
   add_index "activities", ["slug"], :name => "index_activities_on_slug", :unique => true
   add_index "activities", ["state"], :name => "index_activities_on_state"
+  add_index "activities", ["title"], :name => "index_activities_on_title"
   add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
   add_index "activities", ["zip"], :name => "index_activities_on_zip"
 
