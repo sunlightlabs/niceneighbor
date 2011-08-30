@@ -6,7 +6,7 @@ class HaveController < ApplicationController
   end
 
   def show
-    @activity = Have.get(params[:id])
+    @activity = Have.find(params[:id])
   end
 
   def new
@@ -23,11 +23,11 @@ class HaveController < ApplicationController
   end
 
   def edit
-    @activity = Have.get(params[:id])
+    @activity = Have.find(params[:id])
   end
 
   def update
-    @activity = Have.get(params[:id])
+    @activity = Have.find(params[:id])
     if @activity.update_attributes(params[:have])
       redirect_to @activity, :notice => "Updated offer #{@activity.title}"
     else
@@ -36,7 +36,7 @@ class HaveController < ApplicationController
   end
 
   def destroy
-    @activity = Have.get(params[:id])
+    @activity = Have.find(params[:id])
     if @activity.destroy
       redirect_to :action => :index, :notice => "Deleted offer #{@activity.title}"
     else

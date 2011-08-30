@@ -6,7 +6,7 @@ class NeedController < ApplicationController
   end
 
   def show
-    @activity = Need.get(params[:id])
+    @activity = Need.find(params[:id])
   end
 
   def new
@@ -23,11 +23,11 @@ class NeedController < ApplicationController
   end
 
   def edit
-    @activity = Need.get(params[:id])
+    @activity = Need.find(params[:id])
   end
 
   def update
-    @activity = Need.get(params[:id])
+    @activity = Need.find(params[:id])
     if @activity.update_attributes(params[:Need])
       redirect_to @activity, :notice => "Updated request #{@activity.title}"
     else
@@ -36,7 +36,7 @@ class NeedController < ApplicationController
   end
 
   def destroy
-    @activity = Need.get(params[:id])
+    @activity = Need.find(params[:id])
     if @activity.destroy
       redirect_to :action => :index, :notice => "Deleted request #{@activity.title}"
     else

@@ -11,7 +11,7 @@ class NeighborhoodsController < ApplicationController
   end
 
   def show
-    @neighborhood = Neighborhood.get(params[:id])
+    @neighborhood = Neighborhood.find(params[:id])
   end
 
   def new
@@ -32,16 +32,36 @@ class NeighborhoodsController < ApplicationController
   end
 
   def edit
-    @neighborhood = Neighborhood.get(params[:id])
+    @neighborhood = Neighborhood.find(params[:id])
   end
 
   def update
-    @neighborhood = Neighborhood.get(params[:id])
+    @neighborhood = Neighborhood.find(params[:id])
 
     if @neighborhood.update_attributes(params[:neighborhood])
       redirect_to @neighborhood, :notice => "Updated neighborhood #{@neighborhood.name}"
     else
       render :action => :edit
+    end
+  end
+
+  def join
+    @neighborhood = Neighborhood.find(params[:id])
+    @membership = current_user.memberships.create(:neighborhood_id => @neighborhood.id)
+    if @membership.save
+      redirect_to @neighborhood, :notice => "Joined neighborhood #{@neighborhood.name}"
+    else
+      redirect_to @neighborhood, :error => "Unable to join neighborhood #{@neighborhood.name}"
+    end
+  end
+
+  def leave
+    @neighborhood = Neighborhood.find(params[:id])
+    @membership = current_user.memberships.find_by_neighborhood_id(@neighborhood.id)
+    if @membership.destroy
+      redirect_to @neighborhood, :notice => "Left neighborhood #{@neighborhood.name}"
+    else
+      redirect_to @neighborhood, :error => "Unable to leave neighborhood #{@neighborhood.name}"
     end
   end
 

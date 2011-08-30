@@ -20,7 +20,12 @@ Niceneighbor::Application.routes.draw do
     match 'destroy' => :destroy
   end
 
-  resources :neighborhoods , :only => [:index, :show, :new, :create, :edit, :update]
+  resources :neighborhoods , :only => [:index, :show, :new, :create, :edit, :update] do
+    member do
+      post 'join'
+      post 'leave'
+    end
+  end
   match '/neighborhoods/near/:location' => 'neighborhoods#index'
 
   match '/:activity/:query/near/:location' => 'search#results', :activity => /(have|need|find)/
