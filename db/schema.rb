@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830035958) do
+ActiveRecord::Schema.define(:version => 20110830070010) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20110830035958) do
     t.string   "city",       :limit => 50
     t.string   "state",      :limit => 2
     t.string   "zip",        :limit => 10
-    t.boolean  "active"
+    t.boolean  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20110830035958) do
     t.integer  "neighborhood_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_admin"
   end
 
   create_table "messages", :force => true do |t|
@@ -71,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20110830035958) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "created_by"
+    t.text     "welcome_message"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

@@ -1,8 +1,37 @@
 Niceneighbor::Application.routes.draw do
+
+  get "site/index"
+
+  get "site/about"
+
+  get "site/terms"
+
   devise_for :users
 
   match 'voice' => 'twilio#voice'
   match 'sms' => 'twilio#sms'
+
+  scope '/post' do
+    resources :have, :need
+  end
+
+  resources :users, :only => [:show, :new, :create]
+  scope :path => '/profile', :controller => :users do
+    match '' => :edit
+    match 'update' => :update
+    match 'destroy' => :destroy
+  end
+
+  resources :neighborhoods , :only => [:index, :show, :new, :create, :edit, :update]
+
+  match ':activity/:query/in/:location' => 'search#by_activity_in_location', :activity => /(have|need)/
+  match ':activity/:query' => 'search#by_activity', :activity => /(have|need)/
+
+  scope :controller => :site do
+    match '/about' => :about
+    match '/terms' => :terms
+  end
+  root :to => 'site#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

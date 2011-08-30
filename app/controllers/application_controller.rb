@@ -5,4 +5,9 @@ class ApplicationController < ActionController::Base
     @@settings ||= (YAML.load_file "#{Rails.root}/config/settings.yml") rescue ENV
   end
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+
 end

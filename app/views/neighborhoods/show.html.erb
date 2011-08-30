@@ -1,0 +1,6 @@
+<h1><%= @neighborhood.name %></h1>
+<p><%= @neighborhood.welcome_message %>
+<h3>Members:</h3>
+<ul>
+  <%= render(:partial => 'user', :collection => @neighborhood.users) || raw('<li class="empty">This neighborhood has no members</li>') %>
+</ul>

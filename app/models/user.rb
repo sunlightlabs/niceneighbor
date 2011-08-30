@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     name
   end
 
+  def to_param
+    name
+  end
+
   def name
     username || email || phone
   end
