@@ -5,15 +5,27 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :phone, :voice_only, :location, :city, :state, :zip, :generalize_location, :profile
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :phone, :voice_only, :location, :city, :state, :zip, :generalize_location, :profile, :neighborhoods
 
   has_many :activities
   has_many :messages
+  has_many :memberships, :dependent => :destroy
+  has_many :neighborhoods, :through => :memberships, :uniq => true
+
+  validates_format_of :username, :message => 'Must be 3-16 letters, numbers, dashes and underscores', :with => /^[\w\d\-]{3,16}$/
   validates_format_of :phone, :message => 'Must be a 10-digit number with no dashes', :with => /^([0-9]{10})?$/
 
+  def to_s
+    username || email || phone
+  end
+
+  def to_str
+    to_s
+  end
+
   def profile_complete?
+    return true if (username && encrypted_password && email)
     false
-    true if username && password && email
   end
 
 end

@@ -1,10 +1,4 @@
 class Activity < ActiveRecord::Base
-  belongs_to :user
-  has_many :messages
-  extend FriendlyId
-  friendly_id :title, :use => :slugged
-  acts_as_taggable
-
   REQUEST = 1
   OFFER = 2
 
@@ -13,6 +7,13 @@ class Activity < ActiveRecord::Base
     OFFER => 'offer'
   }
 
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
+  acts_as_taggable
+
+  belongs_to :user
+  has_many :messages
+  has_and_belongs_to_many :categories
   validates_inclusion_of :activity_type, :in => ACTIVITY_TYPES.keys,
     :message => "{{value}} must be one of #{ACTIVITY_TYPES.values.join}"
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829195737) do
+ActiveRecord::Schema.define(:version => 20110829232410) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -36,6 +36,26 @@ ActiveRecord::Schema.define(:version => 20110829195737) do
   add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
   add_index "activities", ["zip"], :name => "index_activities_on_zip"
 
+  create_table "activities_categories", :id => false, :force => true do |t|
+    t.integer "activity_id"
+    t.integer "category_id"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name",        :limit => 20, :null => false
+    t.string   "slug",        :limit => 20
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.string   "user_id"
+    t.string   "neighborhood_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "messages", :force => true do |t|
     t.text     "text"
     t.integer  "user_id"
@@ -46,6 +66,13 @@ ActiveRecord::Schema.define(:version => 20110829195737) do
 
   add_index "messages", ["activity_id"], :name => "index_messages_on_activity_id"
   add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+
+  create_table "neighborhoods", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.string   "message"
@@ -91,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20110829195737) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username",               :limit => 16
-    t.integer  "phone",                  :limit => 10
+    t.string   "phone",                  :limit => 10
     t.boolean  "voice_only"
     t.string   "profession"
     t.text     "profile"
