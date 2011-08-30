@@ -1,14 +1,93 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Niceneighbor</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+<html lang="en"><!--<![endif]--><head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Nice Neighbor</title>
+	<meta content="" name="description">
+	<meta content="" name="author">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+	<!-- CSS
+  ================================================== -->
+	<link href="/stylesheets/base.css" rel="stylesheet">
+	<link href="/stylesheets/skeleton.css" rel="stylesheet">
+	<link href="/stylesheets/layout.css" rel="stylesheet">
+	<link href="/stylesheets/main.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dancing+Script">
+	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Sans:300">
+	
+
+	<!-- Favicons
+	================================================== -->
+
+	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/images/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/images/apple-touch-icon-72x72.png" sizes="72x72" rel="apple-touch-icon">
+	<link href="/images/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon">
+	
+
 </head>
 <body>
 
-<%= yield %>
 
-</body>
-</html>
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	<div class="container header">
+		<div class="sixteen columns account"> 
+			<span class="number">719.422.NICE</span> 
+			<span class="accountName">Caitlin Weber</span>
+			<a class="settings" href="#">settings</a>
+			<a class="login logout" href="#">log out</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="container body">
+		<div class="one-third column">
+			<a href="index.html"><h1 class="four columns logo">Nice Neighbor</h1></a>
+				<div class="clear"></div>
+				<ul class="action">
+					<li><a href="have.html">I have</a></li>
+					<li><a href="need.html">I need</a></li>
+				</ul>
+				<hr>
+				<h3>How it Works</h3>
+				<img width="300" height="187" alt="Cells" src="/images/cells.png">
+				<ol>
+				<li>Sign up ! All you need is your name, email address and phone number.</li>
+				<li>Submit a request for the item / items you need in your city.</li>
+				<li>You can also respond to requests from your neighbors by searching in your area.</li>
+				<li>Overall, NiceNeighbor allows you to connect with your fellow neighbors and lend a helping hand.</li>
+			</ol>
+		</div>
+		<div class="two-thirds column mainContent">
+			<%= yield %>
+		</div>
+	</div><!-- container -->
+	<div class="container footer">
+		<img width="103" height="88" alt="Footer Sweater" src="/images/footer_sweater.png">
+		<p>This project is one of many entries in the <a href="http://www.sunlightfoundation.com">Sunlight Foundation's</a> Labs Olympics competition. It doesn't actually exist, and our quotes and stories are entirely made up. You may be fooled by the fact that it's super duper awesome...and actually works, but don't let us trick you.</p>
+	</div>
+
+
+	<!-- JS
+	================================================== -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="/javascripts/tabs.js"></script>
+
+<!-- End Document
+================================================== -->
+
+</body></html>
