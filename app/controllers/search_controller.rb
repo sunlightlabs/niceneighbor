@@ -1,7 +1,9 @@
 class SearchController < ApplicationController
 
   def results
-    @loc = params[:location] || session['geo_location'] || settings['GEOCODER_DEFAULT_LOCATION']
+    @loc = params[:location] ||
+           "#{session['geo_location']['city']}, #{session['geo_location']['state']}" ||
+           settings['GEOCODER_DEFAULT_LOCATION']
     @distance = params[:distance] || settings['GEOCODER_DEFAULT_DISTANCE']
     @type = params[:activity] == 'need' ? 'Have' : 'Need'
     @query = params[:query]
