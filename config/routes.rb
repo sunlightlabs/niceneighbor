@@ -21,6 +21,7 @@ Niceneighbor::Application.routes.draw do
 
   match '/:activity/:query/near/:location' => 'search#results', :activity => /(have|need|find)/
   match '/:activity/:query' => 'search#results', :activity => /(have|need|find)/
+  match '/needs' => 'search#results', :activity => 'need'
 
   scope :controller => :site do
     match '/about' => :about

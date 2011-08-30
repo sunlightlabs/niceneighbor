@@ -1,14 +1,17 @@
 class NeighborhoodsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show, :get_by_location]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @location = get_loc
+    @location = get_location
     @distance = get_distance
     @neighborhoods = Neighborhood.within(@distance, :origin => @loc)
+    if current_user
+      @my_neighborhoods = Neighborhood.find_by_user_id(current_user)
+    end
   end
 
   def show
-    @neighborhood = Neighborhood.find(params[:id])
+    @neighborhood = Neighborhood.get(params[:id])
   end
 
   def new
@@ -26,11 +29,11 @@ class NeighborhoodsController < ApplicationController
   end
 
   def edit
-    @neighborhood = Neighborhood.find(params[:id])
+    @neighborhood = Neighborhood.get(params[:id])
   end
 
   def update
-    @neighborhood = Neighborhood.find(params[:id])
+    @neighborhood = Neighborhood.get(params[:id])
 
     if @neighborhood.update_attributes(params[:neighborhood])
       redirect_to @neighborhood, :notice => "Updated neighborhood #{@neighborhood.name}"

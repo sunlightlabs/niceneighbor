@@ -1,9 +1,9 @@
 class SearchController < ApplicationController
 
   def results
-    @location = get_loc
+    @location = get_location
     @distance = get_distance
-    @query = params[:query]
+    @query = params[:query] || ''
     if params[:activity] == 'have'
       @type = 'Have'
     elsif params[:activity] == 'need'

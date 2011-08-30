@@ -6,14 +6,14 @@ class ApplicationController < ActionController::Base
     @@settings ||= (YAML.load_file "#{Rails.root}/config/settings.yml") rescue ENV
   end
 
-  def get_loc
-    @loc ||= params[:location] ||
-           "#{session['geo_location'].city}, #{session['geo_location'].state}" ||
-           settings['GEOCODER_DEFAULT_LOCATION']
+  def get_location
+    @@location ||= params[:location] ||
+                   "#{session['geo_location'].city}, #{session['geo_location'].state}" rescue nil ||
+                   settings['GEOCODER_DEFAULT_LOCATION']
   end
 
   def get_distance
-    @distance ||= params[:distance] || settings['GEOCODER_DEFAULT_DISTANCE']
+    @@distance ||= params[:distance] || settings['GEOCODER_DEFAULT_DISTANCE']
   end
 
   def not_found
