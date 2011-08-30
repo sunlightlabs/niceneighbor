@@ -20,8 +20,11 @@ class NeighborhoodsController < ApplicationController
 
   def create
     @neigborhood = Neighborhood.new(params[:neighborhood])
-    @neighborhood.created_by = current_user.id rescue nil
+    @neighborhood.created_by = current_user.id
     if @neighborhood.save
+      # create membership for this user as well
+      @membership = current_user.memberships.create(:neighborhood_id => @neighborhood.id, :user_id => current_user.id, :is_admin => true)
+      @membership.save!
       redirect_to @neighborhood, :notice => "Created neighborhood #{@neighborhood.name}"
     else
       render :action => :new
