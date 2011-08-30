@@ -11,24 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830003802) do
+ActiveRecord::Schema.define(:version => 20110830035958) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
-    t.string   "title",         :limit => 140
-    t.string   "slug",          :limit => 28
+    t.string   "title",      :limit => 140
+    t.string   "slug",       :limit => 28
     t.text     "summary"
     t.string   "location"
-    t.string   "city",          :limit => 50
-    t.string   "state",         :limit => 2
-    t.string   "zip",           :limit => 10
+    t.string   "city",       :limit => 50
+    t.string   "state",      :limit => 2
+    t.string   "zip",        :limit => 10
     t.boolean  "active"
-    t.integer  "activity_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
-  add_index "activities", ["activity_type"], :name => "index_activities_on_activity_type"
   add_index "activities", ["city"], :name => "index_activities_on_city"
   add_index "activities", ["location"], :name => "index_activities_on_location"
   add_index "activities", ["slug"], :name => "index_activities_on_slug", :unique => true
@@ -50,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20110830003802) do
   end
 
   create_table "memberships", :force => true do |t|
-    t.string   "user_id"
-    t.string   "neighborhood_id"
+    t.integer  "user_id"
+    t.integer  "neighborhood_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
