@@ -5,4 +5,8 @@ class UsersController < ApplicationController
             User.find_by_email(params[:id]) ||
             not_found
   end
+  
+  def edit
+    
+  end
 end
