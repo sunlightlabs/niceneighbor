@@ -1,11 +1,5 @@
 Niceneighbor::Application.routes.draw do
 
-  get "site/index"
-
-  get "site/about"
-
-  get "site/terms"
-
   devise_for :users
 
   match 'voice' => 'twilio#voice'
