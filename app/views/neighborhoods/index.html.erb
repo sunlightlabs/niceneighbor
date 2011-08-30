@@ -1,2 +1,3 @@
-<h1>Neighborhoods#index</h1>
-<p>Find me in app/views/neighborhoods/index.html.erb</p>
+<ul>
+<%= render(:partial => 'neighborhood_list_item', :collection => @neighborhoods) || raw("<li class='empty'>No neighborhoods found in #{@location}</li>") %>
+</ul>

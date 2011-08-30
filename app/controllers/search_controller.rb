@@ -1,10 +1,8 @@
 class SearchController < ApplicationController
 
   def results
-    @loc = params[:location] ||
-           "#{session['geo_location'].city}, #{session['geo_location'].state}" ||
-           settings['GEOCODER_DEFAULT_LOCATION']
-    @distance = params[:distance] || settings['GEOCODER_DEFAULT_DISTANCE']
+    @location = get_loc
+    @distance = get_distance
     @query = params[:query]
     if params[:activity] == 'have'
       @type = 'Have'
@@ -13,13 +11,10 @@ class SearchController < ApplicationController
     else
       @type = nil
     end
-      @activities = Activity.within(@distance, :origin => @loc).where('title LIKE ?', "%#{@query}%")
+      @activities = Activity.within(@distance, :origin => @location).where('title LIKE ?', "%#{@query}%")
     if @type
       @activities = @activities.where('type=?', @type)
     end
-    @error = "No requests found matching '#{@query}' near #{@loc}"
-
-    render 'results'
   end
 
 end
