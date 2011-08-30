@@ -1,6 +1,10 @@
 Niceneighbor::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users do
+    get "sign_in", :to => "devise/sessions#new"
+    get "sign_up", :to => "devise/registrations#new"
+    get "sign_out", :to => "devise/sessions#destroy"
+  end
 
   match 'voice' => 'twilio#voice'
   match 'sms' => 'twilio#sms'
