@@ -4,8 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :phone, :voice_only, :location, :city, :state, :zip, :generalize_location, :profile, :neighborhoods
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :phone, :voice_only, :location, :city, :state, :zip, :generalize_location, :profile, :neighborhoods, :avatar
 
   has_many :activities
   has_many :messages
@@ -16,11 +18,11 @@ class User < ActiveRecord::Base
   validates_format_of :phone, :message => 'Must be a 10-digit number with no dashes', :with => /^([0-9]{10})?$/
 
   def to_s
-    username || email || phone
+    name
   end
 
-  def to_str
-    to_s
+  def name
+    username || email || phone
   end
 
   def profile_complete?

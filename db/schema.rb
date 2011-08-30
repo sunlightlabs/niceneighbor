@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829232410) do
+ActiveRecord::Schema.define(:version => 20110830003802) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20110829232410) do
     t.string   "state",                  :limit => 2
     t.string   "zip",                    :limit => 10
     t.boolean  "generalize_location"
+    t.string   "avatar"
   end
 
   add_index "users", ["city"], :name => "index_users_on_city"
