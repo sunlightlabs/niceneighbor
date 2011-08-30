@@ -95,8 +95,8 @@
 
 /* #Links
 ================================================== */
-	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
-	a:hover, a:focus { color: #000; }
+	a, a:visited { color: #3fc6a5; text-decoration: underline; outline: 0; }
+	a:hover, a:focus { color: #22a887; }
 	p a, p a:visited { line-height: inherit; }
 
 
@@ -279,13 +279,14 @@
 		margin-bottom: 20px; }
 	fieldset {
 		margin-bottom: 20px; }
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
+	input[type="checkbox"]{
+		
+	}
+	input,
 	textarea,
 	select {
 		border: 1px solid #ccc;
-		padding: 6px 4px;
+		padding: 6px 10px;
 		outline: none;
 		-moz-border-radius: 2px;
 		-webkit-border-radius: 2px;
@@ -293,16 +294,14 @@
 		font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #777;
 		margin: 0;
-		width: 210px;
 		max-width: 100%;
 		display: block;
 		margin-bottom: 20px;
 		background: #fff; }
 	select {
 		padding: 0; }
-	input[type="text"]:focus,
-	input[type="password"]:focus,
-	input[type="email"]:focus,
+	input
+	input,
 	textarea:focus {
 		border: 1px solid #aaa;
  		color: #444;

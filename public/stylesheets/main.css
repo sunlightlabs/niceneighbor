@@ -152,11 +152,13 @@ a.login, a.logout, a.settings {
 }
 label {
     display: inline-block;
-    width: 130px;
 }
+
+
+
 input[type="text"], input[type="password"], input[type="email"], input[type="zip"], input[type="phone"], textarea, select {
     display: inline-block;
-    width: 75%;
+    width: 100%;
 }
 button {
     float: right;
@@ -167,12 +169,13 @@ h2, h3 {
 }
 h2 {
     color: #397AB5;
-    font-size: 56px;
+    font-size: 50px;
     margin-bottom: 30px;
 }
 h3 {
     color: #096171;
     margin-bottom: 30px;
+	font-size: 27px;
 }
 h4 {
     color: #096171;
@@ -285,6 +288,9 @@ blockquote {
     padding-right: 20px;
     text-transform: uppercase;
 }
+
+
+
 .footer {
     text-align: center;
 }
@@ -318,3 +324,19 @@ blockquote {
 .five.columns p, .five.columns h4 {
     text-align: left;
 }
+
+#findBtn{
+	width: 50%;
+	margin-right: 0;
+	float: left;
+}
+
+#id_search{
+	width: 100%;
+}
+label h3{
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
