@@ -1,11 +1,8 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+---
+category_00001:
+  created_at: 2011-08-30 17:25:47.030128000Z
+  description: Cooking utensils, supplies or knowhow
+  id: 1
+  name: Kitchen/Food
+  slug: kitchen-food
+  updated_at: 2011-08-30 17:25:47.030128000Z

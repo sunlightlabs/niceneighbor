@@ -12,22 +12,23 @@ gem 'rails', '3.0.10'
 # gem 'capistrano'
 
 # Bundle the extra gems:
+gem 'pg'
 gem 'devise'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.0'
 gem 'acts-as-taggable-on', '~> 2.1.0'
 gem 'friendly_id', '~> 4.0.0.beta8'
 gem 'carrierwave'
+gem 'geokit-rails3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'webrat'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  # gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 # Production environment
 group :production do
-  gem 'pg'
 end

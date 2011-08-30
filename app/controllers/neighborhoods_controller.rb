@@ -1,5 +1,6 @@
 class NeighborhoodsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :get_by_location]
+
   def index
   end
 
@@ -33,6 +34,12 @@ class NeighborhoodsController < ApplicationController
     else
       render :action => :edit
     end
+  end
+
+  def get_by_location
+    @location = params[:location] || ''
+    not_found unless @location
+    @neighborhoods = Neighborhood.within(settings["GEOCODER_DEFAULT_DISTANCE"], :origin => params[:location])
   end
 
 end

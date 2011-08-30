@@ -1,11 +1,51 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+---
+user_00001:
+  avatar: !!null 
+  city: Arlington
+  created_at: 2011-08-30 17:24:01.326405000Z
+  current_sign_in_at: !!null 
+  current_sign_in_ip: !!null 
+  email: dan.drinkard@gmail.com
+  encrypted_password: $2a$10$FxvzD9sTwklWmBoaLNUxReWP9qYcdjEukbIZhS/BdTObfNb0z3B0C
+  generalize_location: true
+  id: 1
+  last_sign_in_at: !!null 
+  last_sign_in_ip: !!null 
+  location: United States
+  phone: '7032983014'
+  profession: Web Developer
+  profile: Hello World
+  remember_created_at: !!null 
+  reset_password_sent_at: !!null 
+  reset_password_token: !!null 
+  sign_in_count: 0
+  state: VA
+  updated_at: 2011-08-30 17:24:01.326405000Z
+  username: dandrinkard
+  voice_only: false
+  zip: 22204-1603
+user_00002:
+  avatar: !!null 
+  city: Arlington
+  created_at: 2011-08-30 17:35:03.400590000Z
+  current_sign_in_at: !!null 
+  current_sign_in_ip: !!null 
+  email: test@foo.com
+  encrypted_password: $2a$10$8YvDBxAIO64hFmB6rBMZGubrOznlLKmiF3BPRUrsF2LrqqpQi4wx6
+  generalize_location: false
+  id: 2
+  last_sign_in_at: !!null 
+  last_sign_in_ip: !!null 
+  location: !!null 
+  phone: !!null 
+  profession: Tester
+  profile: I test, therefore I am.
+  remember_created_at: !!null 
+  reset_password_sent_at: !!null 
+  reset_password_token: !!null 
+  sign_in_count: 0
+  state: VA
+  updated_at: 2011-08-30 17:35:03.400590000Z
+  username: test
+  voice_only: false
+  zip: '22207'

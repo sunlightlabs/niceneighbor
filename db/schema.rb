@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830070010) do
+ActiveRecord::Schema.define(:version => 20110830172849) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
     t.string   "title",      :limit => 140
-    t.string   "slug",       :limit => 28
+    t.string   "slug",       :limit => 140
     t.text     "summary"
     t.string   "location"
     t.string   "city",       :limit => 50
@@ -74,7 +74,14 @@ ActiveRecord::Schema.define(:version => 20110830070010) do
     t.datetime "updated_at"
     t.integer  "created_by"
     t.text     "welcome_message"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "city"
+    t.string   "state"
   end
+
+  add_index "neighborhoods", ["lat"], :name => "index_neighborhoods_on_lat"
+  add_index "neighborhoods", ["lng"], :name => "index_neighborhoods_on_lng"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.string   "message"
@@ -82,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20110830070010) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
+    t.integer  "year",       :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end

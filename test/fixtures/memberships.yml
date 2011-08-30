@@ -1,9 +1,8 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  user_id: MyString
-  neighborhood_id: MyString
-
-two:
-  user_id: MyString
-  neighborhood_id: MyString
+---
+membership_00001:
+  created_at: 2011-08-30 17:24:45.291375000Z
+  id: 1
+  is_admin: true
+  neighborhood_id: 1
+  updated_at: 2011-08-30 17:33:55.113335000Z
+  user_id: 1

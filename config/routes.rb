@@ -17,8 +17,9 @@ Niceneighbor::Application.routes.draw do
   end
 
   resources :neighborhoods , :only => [:index, :show, :new, :create, :edit, :update]
+  match '/neighborhoods/near/:location' => 'neighborhoods#get_by_location'
 
-  match ':activity/:query/in/:location' => 'search#by_activity_in_location', :activity => /(have|need)/
+  match ':activity/:query/near/:location' => 'search#by_activity_in_location', :activity => /(have|need)/
   match ':activity/:query' => 'search#by_activity', :activity => /(have|need)/
 
   scope :controller => :site do
