@@ -2,7 +2,7 @@ class HaveController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def index
-    @activities = Have.find_by_user_id(current_user.id)
+    @activities = current_user.activities.where(:type => "Have")
     if @activities.blank?
       redirect_to :action => :new
     end

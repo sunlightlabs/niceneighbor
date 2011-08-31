@@ -32,6 +32,17 @@ class SearchController < ApplicationController
     if @type
       @activities = @activities.where('type=?', @type)
     end
+
+    if !@activities.empty?
+      geo = Geokit::Geocoders::MultiGeocoder.geocode(@location)
+      @map = Mapstraction.new("map", :google)
+      @map.control_init(:small => true)
+      @map.center_zoom_init([geo.lat,geo.lng], 11)
+      @activities.each do |activity|
+        @map.marker_init(Marker.new([activity.lat,activity.lng], :label => activity.preferred_location, :info_bubble => "<a href='#{url_for activity}'><img src='#{activity.user.avatar_url}' width='24' height='24' /> #{activity.title} near #{activity.preferred_location}</a>"))
+      end
+    end
+
   end
 
 end

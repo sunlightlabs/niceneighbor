@@ -1,42 +1,4 @@
 <h2>I need...</h2>
-	<form id="mailinglistform" method="post" action="/mailinglist/subscribe/"> 
-		<div style="display:none"><input type="hidden" value="ca916f18bbf5851357e155350311455d" name="csrfmiddlewaretoken"></div> 
-		<ul> 
-			<li> 
-				<textarea placeholder="enter something clever" id="id_password" name="password" type="password" class="transparent"></textarea>
-			</li> 
-			<li> 
-				<label for="id_category">Which categories does it fit in?</label>
-				<ul>
-					<li>
-					<input type="checkbox" value="Bike" name="vehicle"> Weather / Environment
-					</li>
-					<li>
-					<input type="checkbox" value="Bike" name="vehicle"> Cleaning / Cleaning Supplies
-					</li>
-					<li>
-					<input type="checkbox" value="Bike" name="vehicle"> Cooking / Kitchen Supplies
-					</li>
-					<li>
-					<input type="checkbox" value="Bike" name="vehicle"> Equipment / Power Tools
-					</li>
-					<li>
-					<input type="checkbox" value="Bike" name="vehicle"> Man Power
-					</li>
-					<li>
-					<input type="checkbox" value="Bike" name="vehicle"> Elder Assistance
-					</li>
-					<li>
-					<input type="checkbox" value="Bike" name="vehicle"> Animal / Wildlife / Pets
-					</li>
-
-			 
-			<li> 
-			    <button type="submit" id="joinBtn"> 
-			        <span>Submit</span> 
-			    </button> 
-		    </li> 
-		</ul> 
-		<hr class="noSpace">
-	</li>
-</ul></form>
+<ul>
+  <%= render(:partial => 'activities/activity', :collection => @activities) %>
+</ul>

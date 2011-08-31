@@ -1,3 +1,15 @@
+<% content_for :head do %>
+  <% if @map %>
+  <%=raw Mapstraction.header(:google) %>
+  <%=raw @map.to_html %>
+  <% end %>
+<% end %>
+
+<h2>Search results</h2>
+<p><strong><%="#{@query.pluralize} near #{@location}"%>:</strong></p>
+<% if @map %>
+  <%=raw @map.div(:width => 600, :height => 400) %>
+<% end %>
 <ul>
-<%= render(:partial => 'activity', :collection => @activities) || raw("<li class='empty'>No matches found for '#{@query}' near #{@location}</li>") %>
+<%= render(:partial => 'activities/activity', :collection => @activities) || raw("<li class='empty'>No matches found for '#{@query}' near #{@location}</li>") %>
 </ul>

@@ -2,7 +2,10 @@ class NeedController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def index
-    @activities = Need.find_by_user_id(current_user.id)
+    @activities = current_user.activities.where(:type => "Need")
+    if @activities.blank?
+      redirect_to :action => :new
+    end
   end
 
   def show
@@ -22,6 +25,7 @@ class NeedController < ApplicationController
 
   def new
     @activity = Need.new
+    @categories = Category.all
   end
 
   def create

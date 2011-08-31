@@ -23,6 +23,14 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  def verb
+    if type == "Have"
+      'has'
+    else
+      'needs'
+    end
+  end
+
   private
 
   def geocode
