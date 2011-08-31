@@ -24,7 +24,7 @@ module Ym4r
 
     unless File.exist?(RAILS_ROOT + '/config/map24_api_key.yml')
       # raise Map24APIKeyConfigFileNotFoundException.new("File RAILS_ROOT/config/map24_api_key.yml not found")
-      `MAP24_API_KEY` = ENV['MAP24_API_KEY'] rescue ''
+      MAP24_API_KEY = ENV['MAP24_API_KEY'] rescue ''
     else
       MAP24_API_KEY = YAML.load_file(RAILS_ROOT + '/config/map24_api_key.yml')[ENV['RAILS_ENV']]
     end
