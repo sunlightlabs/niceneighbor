@@ -35,7 +35,7 @@ class TwilioController < ApplicationController
         @payload = "Request received! We'll let your neighbors know about it."
       elsif body =~ /have (.)/i
         @payload = "Awesome. Thanks for letting us know!"
-      elsif body =~ /list(.)/i
+      elsif body =~ /list/i
         @payload = "Thanks for checking in. Your neighbors don't need anything right now."
       else
         @payload = "I don't understand. Start a message with \"I need ...\" or \"I have ...\", or reply with \"List\" to see needs near you."
