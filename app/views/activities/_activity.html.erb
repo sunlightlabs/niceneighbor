@@ -1,7 +1,7 @@
 <li class="<%= activity_classname_for activity %>">
   <a href="<%= activity_path activity %>">
     <%= image_tag activity.user.avatar_url, {:width => 24, :height => 24} %>
-    <strong><%= activity.user.display_name %></strong> <%= "#{activity.verb} #{activity.title}"%>
+    <strong><%= activity.user.display_name %></strong>: <%= "#{activity.title}"%>
     <span class="location">(<%= "#{activity.general_location}" %>)</span>
   </a>
 </li>
