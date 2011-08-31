@@ -32,9 +32,15 @@ class TwilioController < ApplicationController
         else
           @sms << "Couldn't figure out your address. Please reply with your FULL address."
         end
-      elsif body =~ /need (.)/i
+      elsif body =~ /need (.*)/i
+        title = $1
+        title[0] = title[0].capitalize
+        Need.create!(:title => title, :user => user, :location => user.location + " " + user.zip)
         @sms << "Request received! We'll let your neighbors know about it."
-      elsif body =~ /have (.)/i
+      elsif body =~ /have (.*)/i
+        title = $1
+        title[0] = title[0].capitalize
+        Have.create!(:title => title, :user => user, :location => user.location + " " + user.zip)
         @sms << "Awesome. Thanks for letting us know!"
       elsif body =~ /list/i
 
