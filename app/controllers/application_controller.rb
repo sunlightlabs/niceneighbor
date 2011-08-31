@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_distance
-    @@distance ||= params[:distance] || settings['GEOCODER_DEFAULT_DISTANCE']
+    @@distance ||= params[:distance] || settings['GEOCODER_DEFAULT_DISTANCE'].to_i
   end
 
   def not_found
