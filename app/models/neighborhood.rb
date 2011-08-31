@@ -10,15 +10,15 @@ class Neighborhood < ActiveRecord::Base
   validates_presence_of :created_by
 
   def locality
-    "#{self.city}, #{self.state}"
+    "#{city}, #{state}"
   end
 
   private
 
   def geocode_address
-    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{self.name}")
+    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{name}")
     if geo.success
-      self.name = self.name.sub(/#{geo.state}$/i, '').chomp(', ').sub(/#{geo.city}$/i, '').chomp(', ')
+      self.name = name.sub(/#{geo.state}$/i, '').chomp(', ').sub(/#{geo.city}$/i, '').chomp(', ')
       self.city = geo.city
       self.state = geo.state
       self.lat = geo.lat

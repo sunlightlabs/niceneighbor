@@ -8,13 +8,13 @@ class Activity < ActiveRecord::Base
   before_validation :geocode
 
   def general_location
-    "#{self.location}, #{self.city}".sub(/^[0-9]{1,6} /, '')
+    "#{location}, #{city}".sub(/^[0-9]{1,6} /, '')
   end
 
   private
 
   def geocode
-    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{self.location} #{self.city} #{self.state} #{self.zip}".strip)
+    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{location} #{city} #{state} #{zip}".strip)
     if geo.success
       self.city = geo.city
       self.state = geo.state
