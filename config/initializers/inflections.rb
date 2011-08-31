@@ -9,5 +9,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   # inflect.uncountable %w( fish sheep )
   # inflect.plural /^(activit)y$/i, '\1ies'
   # inflect.singular /^(activit)ies/i, '\1y'
-  inflect.uncountable %w( have need )
+  inflect.uncountable %w( have need sugar )
 end
