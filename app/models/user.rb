@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    return name if not name.blank?
+    return username if not username.blank?
     return email if not email.blank?
     return phone if not phone.blank?
     return id
