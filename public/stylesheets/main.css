@@ -360,6 +360,7 @@ li.have{
 
 .neighborhoodListItem{
   position:relative;
+  margin-bottom:24px;
 }
 .membershipButton{
   position:absolute;
