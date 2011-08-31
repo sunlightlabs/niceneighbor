@@ -1,4 +1,5 @@
 <li class="user userItemWithThumb">
-  <a href="<%= user_path user.to_param %>"><img src="<%= user.avatar_url %>" alt="Photo of" /><br/>
-    <span><%= user.name %></span></a>
+  <a href="<%= user_path user.to_param %>"><%= image_tag user.avatar_url, {:alt => 'Photo of'} %><br/>
+    <span><%= user.display_name %></span>
+  </a>
 </li>

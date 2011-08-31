@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   def show
-    @user = User.find_by_username(params[:id]) ||
-            User.find_by_phone(params[:id]) ||
-            User.find_by_email(params[:id]) ||
-            not_found
+    @user = User.find_by_username(params[:id])
+    @user = User.find(params[:id]) if@user.empty?
+    not_found if @user.empty?
   end
 
   def edit

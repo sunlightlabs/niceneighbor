@@ -14,22 +14,33 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :neighborhoods, :through => :memberships, :uniq => true
 
-  validates_format_of :username, :message => 'Must be 3-16 letters, numbers, dashes and/or underscores', :with => /^(([\w\d\-]{3,16})|(.{0}))$/
+  validates_format_of :username, :message => 'Must be 3-16 letters, numbers, dashes and/or underscores', :with => /^[\w\d\-]{3,16}$/
+  validates_format_of :username, :message => 'Cannot be a number', :with => /[\w\-]/
   validates_format_of :phone, :message => 'Must be a 10-digit number with no dashes', :with => /^([0-9]{10})?$/
 
   def to_param
-    name
+    return username if not username.blank?
+    id
   end
 
   def to_s
-    to_param
+    display_name
+  end
+
+  def to_str
+    to_s
   end
 
   def name
-    return username if not username.blank?
-    return email if not email.blank?
-    return phone if not phone.blank?
-    return id
+    return username if !username.blank?
+    return email if !email.blank?
+    return phone if !phone.blank?
+    "unnamed user #{user.id.to_s}"
+  end
+
+  def display_name
+    return username if !username.blank?
+    "<unnamed user #{id.to_s}>"
   end
 
   def hometown
