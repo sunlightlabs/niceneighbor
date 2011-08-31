@@ -1,7 +1,7 @@
 module NeighborhoodsHelper
 
   def membership_classname_for(neighborhood)
-    'member' if current_user.is_member_of? neighborhood
+    'member' if current_user.is_member_of? neighborhood rescue nil
   end
 
   def membership_button_for(neighborhood)
