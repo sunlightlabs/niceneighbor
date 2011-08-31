@@ -17,6 +17,8 @@ class NeighborhoodsController < ApplicationController
     @map.control_init(:small => true)
     @map.center_zoom_init([@neighborhood.lat,@neighborhood.lng], settings['GEOCODER_DEFAULT_ZOOM'].to_i)
     @map.marker_init(Marker.new([@neighborhood.lat,@neighborhood.lng], :label => @neighborhood.name))
+
+    @activities = Activity.within(settings['GEOCODER_DEFAULT_DISTANCE'].to_i)
   end
 
   def new

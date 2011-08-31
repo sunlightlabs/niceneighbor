@@ -11,3 +11,11 @@
 <ul>
   <%= render(:partial => 'user', :collection => @neighborhood.users) || raw('<li class="empty">This neighborhood has no members</li>') %>
 </ul>
+<div class="clear"></div>
+
+<% if !@activities.empty? %>
+<h3>Recent Activity:</h3>
+<ul>
+  <%= render(:partial => 'activities/activity', :collection => @activities) %>
+</ul>
+<% end %>

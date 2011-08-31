@@ -1,0 +1,11 @@
+<h3>Respond to <%= @message.activity.user.display_name %></h3>
+<%= form_for [@message.activity, @message] do |f| %>
+  <p>
+    <%= image_tag(current_user.avatar_url) %>
+    <%= f.text_area :text %>
+  </p>
+  <p class="controls">
+    <%= f.submit "Send message" %>
+  </p>
+
+<% end %>

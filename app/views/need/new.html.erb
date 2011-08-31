@@ -1,0 +1,23 @@
+<h2>I need...</h2>
+  <%= form_for @activity, :url => {:action => "create"} do |f| %>
+  <input type="hidden" name="need[location]" value="<%= location_for current_user %>" />
+  <ul>
+    <li>
+      <textarea placeholder="enter something clever" id="id_password" name="need[title]" class="transparent" maxlength="140"></textarea>
+    </li>
+    <% if @categories %>
+    <label for="id_category">Which category does it fit in?</label>
+      <ul>
+        <% @categories.each do |category| %>
+        <li>
+          <label><input type="checkbox" value="<%= category.to_i %>" name="need[categories][]"> <%= category %></label>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <li class="controls">
+      <%= f.submit "Submit" %>
+    </li>
+    <hr class="noSpace">
+  </ul>
+  <% end %>

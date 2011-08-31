@@ -1,0 +1,26 @@
+<% content_for :head do %>
+  <% if @map %>
+  <%=raw Mapstraction.header(:google) %>
+  <%=raw @map.to_html %>
+  <% end %>
+<% end %>
+
+<span class="label"><%= @activity.user.display_name %> <%= activity_status_label_for @activity %></span>
+<h3><%= @activity.title %></h3>
+<p class="meta">
+<span class="location"><%= @activity.preferred_location %></span>
+</p>
+<% if @map %>
+  <%=raw @map.div(:width => 600, :height => 180) %>
+<% end %>
+<p class="description"><%= @activity.summary %></p>
+
+<% if @message %>
+<%= render(:partial => 'messages/new', :object => @message) %>
+<% elsif @activity.is_active %>
+<%= activity_status_message_for @activity %>
+<% elsif !current_user %>
+<p class="callToAction"><%= link_to "Sign up", sign_up_path %> or <%= link_to "sign in", sign_in_path %> to respond</p>
+<% end %>
+
+<%= activity_close_button @activity%> <%= activity_delete_button @activity%>

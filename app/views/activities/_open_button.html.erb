@@ -1,0 +1,6 @@
+<div>
+<%= form_tag open_activity_path activity do %>
+  <input type="hidden" name"=<%= activity_type_for activity %>[is_active]" value="true">
+  <button type="submit">Re-open this <%= activity_type_for activity %></button>
+<% end %>
+</div>

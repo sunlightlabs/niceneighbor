@@ -1,0 +1,4 @@
+<div>
+  <%= button_to("Delete #{activity_type_for activity}", "#{activity_path activity}", :confirm => 'Are you sure?',
+            :method => "delete", :remote => true, :disable_with => 'loading...') %>
+</div>

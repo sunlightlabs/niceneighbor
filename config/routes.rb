@@ -9,8 +9,14 @@ Niceneighbor::Application.routes.draw do
   match 'voice' => 'twilio#voice'
   match 'sms' => 'twilio#sms'
 
-  scope '/post' do
-    resources :have, :need
+  scope '/posts' do
+    resources :have, :need do
+      member do
+        post 'open'
+        post 'close'
+      end
+      resources :messages
+    end
   end
 
   resources :users, :only => [:show, :new, :create]

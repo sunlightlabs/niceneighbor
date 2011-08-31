@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830191351) do
+ActiveRecord::Schema.define(:version => 20110831182520) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20110830191351) do
     t.string   "city",       :limit => 50
     t.string   "state",      :limit => 2
     t.string   "zip",        :limit => 10
-    t.boolean  "is_active"
+    t.boolean  "is_active",                 :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
@@ -119,8 +119,8 @@ ActiveRecord::Schema.define(:version => 20110830191351) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",   :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(:version => 20110830191351) do
     t.string   "city",                   :limit => 50
     t.string   "state",                  :limit => 2
     t.string   "zip",                    :limit => 10
-    t.boolean  "generalize_location"
+    t.boolean  "generalize_location",                   :default => true
     t.string   "avatar"
   end
 

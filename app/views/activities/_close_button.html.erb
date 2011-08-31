@@ -1,0 +1,6 @@
+<div>
+<%= form_tag close_activity_path activity do %>
+  <input type="hidden" name="<%= activity_type_for activity %>[is_active]" value="false">
+  <button type="submit">Close this <%= activity_type_for activity %></button>
+<% end %>
+</div>

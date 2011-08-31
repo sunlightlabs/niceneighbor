@@ -1,0 +1,7 @@
+<li class="message">
+  <p>
+    <span class="meta date"><%= @message.created_at %></span>
+    <%= image_tag(@message.user.avatar_url) %>
+    <strong><%= @message.user.display_name %></strong> <%= @message.text %>
+  </p>
+</li>

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Your account has been deleted.'
       redirect_to root_path
     else
-      flash[:warning] = 'Unable to delete your account.'
+      flash[:error] = 'Unable to delete your account.'
       redirect_to profile_path
     end
   end
