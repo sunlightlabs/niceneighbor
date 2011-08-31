@@ -358,4 +358,11 @@ li.have{
   margin:0 2em 2em 0;
 }
 
-
+.neighborhoodListItem{
+  position:relative;
+}
+.membershipButton{
+  position:absolute;
+  right:0px;
+  top:-10px;
+}
