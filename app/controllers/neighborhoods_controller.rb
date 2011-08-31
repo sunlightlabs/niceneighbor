@@ -6,7 +6,7 @@ class NeighborhoodsController < ApplicationController
     @distance = get_distance
     @neighborhoods = Neighborhood.within(@distance, :origin => @loc)
     if current_user
-      @my_neighborhoods = Neighborhood.find_by_user_id(current_user)
+      @my_neighborhoods = current_user.neighborhoods
     end
   end
 

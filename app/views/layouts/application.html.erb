@@ -23,7 +23,7 @@
 	<link href="/stylesheets/main.css" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dancing+Script">
 	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Sans:300">
-	
+
 
 	<!-- Favicons
 	================================================== -->
@@ -32,7 +32,7 @@
 	<link href="/images/apple-touch-icon.png" rel="apple-touch-icon">
 	<link href="/images/apple-touch-icon-72x72.png" sizes="72x72" rel="apple-touch-icon">
 	<link href="/images/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon">
-	
+
 
 </head>
 <body>
@@ -44,16 +44,8 @@
 
 	<!-- Delete everything in this .container and get started on your own site! -->
 
-	<div class="container header">
-		<div class="sixteen columns account"> 
-			<span class="number">719.422.NICE</span> 
-			<span class="accountName">Caitlin Weber</span>
-			<a class="settings" href="#">settings</a>
-			<a class="login logout" href="#">log out</a>
-		</div>
-		<div class="clear"></div>
-	</div>
-	
+    <%= render "layouts/userbar" %>
+
 	<div class="container body">
 		<div class="one-third column">
 			<a href="index.html"><h1 class="four columns logo">Nice Neighbor</h1></a>
@@ -62,17 +54,18 @@
 					<li><a href="/post/have">I have</a></li>
 					<li><a href="/post/need">I need</a></li>
 				</ul>
-				<form>
+				<form action="<%= search_path %>">
 					<ul>
-						<li> 
-							<label for="id_search"><h3>What are you looking for?</h3></label> 
-							<input type="search" placeholder="I need..." id="id_search" name="search" class="transparent"> 
+						<li>
+							<label for="id_search"><h3>What are you looking for?</h3></label>
+							<input type="hidden" name="activity" value="find">
+							<input type="search" placeholder="I need..." id="id_search" name="query" class="transparent">
 						</li>
-						<li> 
-						    <button type="submit" id="findBtn"> 
-						        <span>Find It!</span> 
-						    </button> 
-					    </li>
+						<li>
+							<button type="submit" id="findBtn">
+								<span>Find It!</span>
+							</button>
+						</li>
 					</ul>
 				</form>
 				<hr>

@@ -1,3 +1,3 @@
 <ul>
-<%= render(:partial => 'activity', :collection => @activities) || raw("<li class='empty'>No requests found matching '#{@query}' near #{@location}</li>") %>
+<%= render(:partial => 'activity', :collection => @activities) || raw("<li class='empty'>No matches found for '#{@query}' near #{@location}</li>") %>
 </ul>

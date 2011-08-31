@@ -23,7 +23,7 @@
 	<link href="/stylesheets/main.css" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dancing+Script">
 	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Sans:300,700">
-	
+
 
 	<!-- Favicons
 	================================================== -->
@@ -35,7 +35,7 @@
 
   	<%= javascript_include_tag :defaults %>
   	<%= csrf_meta_tag %>
-	
+
 
 </head>
 <body>
@@ -47,44 +47,37 @@
 
 	<!-- Delete everything in this .container and get started on your own site! -->
 
-	<div class="container header home">
-		<div class="sixteen columns account"> 
-			<span class="number">719.422.NICE</span>
-			<span class="accountName">Caitlin Weber</span>
-			<a class="settings" href="#">settings</a>
-			<a class="login logout" href="#">log out</a>
-		</div>
-		<div class="clear"></div>
-	</div>
+	<%= render "layouts/userbar" %>
+
 	<div class="container body">
 		<a href="index.html"><h1 class="logo">Nice Neighbor</h1></a>
-		<div class="one-third column callToAction"> 
+		<div class="one-third column callToAction">
 			<h2>Sign Up!</h2>
 			<p class="tag">Become part of a network of helpful neighbors.
 			<span>Help a neighbor out</span></p>
 		</div>
 		<div class="two-thirds column signUp">
-			 <form id="mailinglistform" method="post" action="/mailinglist/subscribe/"> 
-				<div style="display:none"><input type="hidden" value="ca916f18bbf5851357e155350311455d" name="csrfmiddlewaretoken"></div> 
-				<ul> 
-					<li> 
-						<label for="id_email">Email</label> 
-						<input type="email" placeholder="enter your email address" id="id_email" name="email" class="transparent"> 
-					</li> 
-					<li> 
-						<label for="id_zip">Phone Number</label> 
-						<input type="phone" maxlength="12" pattern="[0-9]{5}" placeholder="phone number e.g. 503-123-4567" id="id_phone" name="phone" class="transparent"> 
-					</li> 
-					<li> 
-						<label for="id_zip">Zip code</label> 
-						<input type="zip" maxlength="5" pattern="[0-9]{5}" placeholder="and zip code" id="id_zipcode" name="zipcode" class="transparent"> 
+			 <form id="mailinglistform" method="post" action="/mailinglist/subscribe/">
+				<div style="display:none"><input type="hidden" value="ca916f18bbf5851357e155350311455d" name="csrfmiddlewaretoken"></div>
+				<ul>
+					<li>
+						<label for="id_email">Email</label>
+						<input type="email" placeholder="enter your email address" id="id_email" name="email" class="transparent">
 					</li>
-					<li> 
-					    <button type="submit" id="joinBtn"> 
-					        <span>Join</span> 
-					    </button> 
-				    </li> 
-				</ul> 
+					<li>
+						<label for="id_zip">Phone Number</label>
+						<input type="phone" maxlength="12" pattern="[0-9]{5}" placeholder="phone number e.g. 503-123-4567" id="id_phone" name="phone" class="transparent">
+					</li>
+					<li>
+						<label for="id_zip">Zip code</label>
+						<input type="zip" maxlength="5" pattern="[0-9]{5}" placeholder="and zip code" id="id_zipcode" name="zipcode" class="transparent">
+					</li>
+					<li>
+					    <button type="submit" id="joinBtn">
+					        <span>Join</span>
+					    </button>
+				    </li>
+				</ul>
 				<div class="clear"></div>
 			</form>
 		</div>
@@ -116,11 +109,11 @@
 				<p>I need a saw !, a tree has fallen on my house during this hurricane, and my son is trapped. <em>PLEASE HELP</em></p>
 			</div>
 			<div class="five columns panelTwo">
-				<h4>Urgent Response from Fred</h4> 
+				<h4>Urgent Response from Fred</h4>
 				<p>Sue, I will be right over, I have a saw and I am certified lumberjack. We will free your son.</p>
 			</div>
 			<div class="ten columns panelThree">
-				<h4>Sue's son survived the horrible hurricane due to kinda help and assistance from NiceNeighbor </h4>			
+				<h4>Sue's son survived the horrible hurricane due to kinda help and assistance from NiceNeighbor </h4>
 			</div>
 
 		</div>

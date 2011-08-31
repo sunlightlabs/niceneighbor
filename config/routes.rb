@@ -15,9 +15,9 @@ Niceneighbor::Application.routes.draw do
 
   resources :users, :only => [:show, :new, :create]
   scope :path => '/profile', :controller => :users do
-    match '' => :edit
-    match 'update' => :update
-    match 'destroy' => :destroy
+    match '' => :edit, :as => :profile
+    match 'update' => :update, :as => :update_profile
+    match 'destroy' => :destroy, :as => :destroy_profile
   end
 
   resources :neighborhoods , :only => [:index, :show, :new, :create, :edit, :update] do
@@ -28,9 +28,9 @@ Niceneighbor::Application.routes.draw do
   end
   match '/neighborhoods/near/:location' => 'neighborhoods#index'
 
-  match '/:activity/:query/near/:location' => 'search#results', :activity => /(have|need|find)/
-  match '/:activity/:query' => 'search#results', :activity => /(have|need|find)/
-  match '/needs' => 'search#results', :activity => 'need'
+  match '/search' => 'search#redirect', :as => :search
+  match '/:activity/*other' => 'search#results', :activity => /(have|need|find)/, :as => :search_results
+  match '/needs' => 'search#results', :activity => 'need', :as => :needs
 
   scope :controller => :site do
     match '/about' => :about
