@@ -31,6 +31,7 @@ body {
     padding-right: 10px;
     width: 960px;
 }
+
 h1.four.logo {
     background-attachment: scroll;
     background-clip: border-box;
@@ -367,3 +368,4 @@ li.have{
   right:0px;
   top:-10px;
 }
+h1 {position:relative}
