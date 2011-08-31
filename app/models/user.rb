@@ -18,11 +18,11 @@ class User < ActiveRecord::Base
   validates_format_of :phone, :message => 'Must be a 10-digit number with no dashes', :with => /^([0-9]{10})?$/
 
   def to_param
-    name || self.id
+    self.name || self.id
   end
 
   def to_s
-    to_param
+    self.to_param
   end
 
   def name
@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
   end
 
   def has
-    has ||= self.activities.where(:type => 'Have')
+    @has ||= self.activities.where(:type => 'Have')
   end
 
   def needs
-    needs ||= self.activities.where(:type => 'Need')
+    @needs ||= self.activities.where(:type => 'Need')
   end
 
   def profile_complete?
