@@ -13,13 +13,15 @@ module Ym4r
     end
     class MultimapAPIKeyConfigFileNotFoundException < StandardError
     end
-    
+
     unless File.exist?(RAILS_ROOT + '/config/gmaps_api_key.yml')
-      raise GMapsAPIKeyConfigFileNotFoundException.new("File RAILS_ROOT/config/gmaps_api_key.yml not found")
+      # raise GMapsAPIKeyConfigFileNotFoundException.new("File RAILS_ROOT/config/gmaps_api_key.yml not found")
+      # hacked for heroku
+      GMAPS_API_KEY = ENV['GMAPS_API_KEY']
     else
       GMAPS_API_KEY = YAML.load_file(RAILS_ROOT + '/config/gmaps_api_key.yml')[ENV['RAILS_ENV']]
     end
-    
+
     unless File.exist?(RAILS_ROOT + '/config/map24_api_key.yml')
       raise Map24APIKeyConfigFileNotFoundException.new("File RAILS_ROOT/config/map24_api_key.yml not found")
     else
