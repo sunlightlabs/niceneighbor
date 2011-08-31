@@ -17,16 +17,16 @@ class User < ActiveRecord::Base
   validates_format_of :username, :message => 'Must be 3-16 letters, numbers, dashes and underscores', :with => /^[\w\d\-]{3,16}$/
   validates_format_of :phone, :message => 'Must be a 10-digit number with no dashes', :with => /^([0-9]{10})?$/
 
-  def to_s
-    name
+  def to_param
+    name || self.id
   end
 
-  def to_param
-    name
+  def to_s
+    to_param
   end
 
   def name
-    username || email || phone
+    self.username || self.email || self.phone
   end
 
   def hometown
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_complete?
-    return true if (username && encrypted_password && email)
+    return true if (self.username && self.encrypted_password && self.email)
     false
   end
 
