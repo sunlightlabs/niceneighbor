@@ -16,7 +16,7 @@ class Activity < ActiveRecord::Base
   end
 
   def preferred_location
-    if user.generalize_location?
+    if user.generalize_location
       general_location
     else
       exact_location
