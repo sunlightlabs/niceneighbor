@@ -6,7 +6,7 @@
 <% end %>
 
 <h2>Search results</h2>
-<p><strong><%="#{@query.pluralize} near #{@location}"%>:</strong></p>
+<p><strong><%="#{@query.pluralize rescue nil} near #{@location}"%>:</strong></p>
 <% if @map %>
   <%=raw @map.div(:width => 600, :height => 400) %>
 <% end %>
