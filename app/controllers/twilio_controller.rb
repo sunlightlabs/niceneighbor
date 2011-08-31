@@ -8,7 +8,14 @@ class TwilioController < ApplicationController
 
   def sms
 
-    @payload = "Your phone number is: #{params['From']}. Are you in #{params['FromCity']} ?"
+    sms_id = params['SmsSid']
+    body = params['Body']
+    from = params['From'][2..11]
+    city = params['FromCity'].titlecase
+    state = params['FromState'].titlecase
+    zip = params['FromZip']
+
+    @payload = "Your phone number is: #{from}. You are in #{city}, #{state} #{zip}. You said '#{body}'."
 
   end
 
