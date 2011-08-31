@@ -29,8 +29,31 @@ class User < ActiveRecord::Base
     username || email || phone
   end
 
+  def hometown
+    "#{self.city}, #{self.state}"
+  end
+
+  def general_location
+    "#{self.location}, #{self.city}".sub(/^[0-9]{1,6} /, '')
+  end
+
+  def has
+    has ||= self.activities.where(:type => 'Have')
+  end
+
+  def needs
+    needs ||= self.activities.where(:type => 'Need')
+  end
+
   def profile_complete?
     return true if (username && encrypted_password && email)
+    false
+  end
+
+  def is_member_of?(neighborhood)
+    if self.neighborhoods.include? neighborhood
+      return true
+    end
     false
   end
 

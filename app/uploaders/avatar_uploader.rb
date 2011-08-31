@@ -4,7 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -19,12 +19,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "/images/fallback/" + [version_name, "default.gif"].compact.join('_')
+    "/images/" + [version_name, "default_avatar.png"].compact.join('_')
   end
 
   # # Process files as they are uploaded:
-  # process :scale => [72, 72]
-  #
+  process :resize_to_fill => [48, 48]
+
   # def scale(width, height)
   #   # do something
   # end

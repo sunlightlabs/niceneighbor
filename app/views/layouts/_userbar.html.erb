@@ -2,6 +2,7 @@
 	<div class="sixteen columns account">
 		<span class="number">719.422.NICE</span>
 		<% if current_user %>
+		<%#= image_tag current_user.avatar_url, :size => "20x20" %>
 		<span class="accountName"><%= current_user.name %></span>
 		<a class="settings" href="<%= profile_path %>">settings</a>
 		<a class="login logout" href="<%= sign_out_path %>">log out</a>

@@ -9,6 +9,10 @@ class Neighborhood < ActiveRecord::Base
   before_validation :geocode_address
   validates_presence_of :created_by
 
+  def locality
+    "#{self.city}, #{self.state}"
+  end
+
   private
 
   def geocode_address

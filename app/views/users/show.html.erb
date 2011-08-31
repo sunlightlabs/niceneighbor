@@ -1,1 +1,18 @@
 <h1><%= @user %></h1>
+<p><%= @user.profession %><br/>
+   <%= @user.hometown %></p>
+
+<% if not @user.profile.blank? %>
+<h3>About</h3>
+<p><%= @user.profile %></p>
+<% end %>
+
+<% if not @user.has.blank? %>
+<h3>Offering</h3>
+<%= render(:partial => 'have/offer', :collection => @user.has) %>
+<% end %>
+
+<% if not @user.needs.blank? %>
+<h3>Needs</h3>
+<%= render(:partial => 'need/request', :collection => @user.needds) %>
+<% end %>

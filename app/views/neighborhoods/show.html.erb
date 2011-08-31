@@ -1,5 +1,12 @@
-<h1><%= @neighborhood.name %></h1>
-<p><%= @neighborhood.welcome_message %>
+<% content_for :head do %>
+<%=raw Mapstraction.header(:google) %>
+<%=raw @map.to_html %>
+<% end %>
+
+
+<h1><%= @neighborhood.name %> <%= membership_button_for @neighborhood %></h1>
+<p class="welcomeMessage"><%= @neighborhood.welcome_message %></p>
+<%=raw @map.div(:width => 600, :height => 180) %>
 <h3>Members:</h3>
 <ul>
   <%= render(:partial => 'user', :collection => @neighborhood.users) || raw('<li class="empty">This neighborhood has no members</li>') %>

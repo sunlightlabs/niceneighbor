@@ -12,6 +12,11 @@ class NeighborhoodsController < ApplicationController
 
   def show
     @neighborhood = Neighborhood.find(params[:id])
+
+    @map = Mapstraction.new("map", :google)
+    @map.control_init(:small => true)
+    @map.center_zoom_init([@neighborhood.lat,@neighborhood.lng],settings['GEOCODER_DEFAULT_ZOOM'])
+    @map.marker_init(Marker.new([@neighborhood.lat,@neighborhood.lng], :label => @neighborhood.name))
   end
 
   def new

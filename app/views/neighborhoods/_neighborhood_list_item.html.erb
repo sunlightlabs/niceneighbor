@@ -1,3 +1,5 @@
-<li>
-  <%= "#{neighborhood_list_item.name} (#{neighborhood_list_item.city}, #{neighborhood_list_item.state})"%>
+<li class="<%= membership_classname_for neighborhood_list_item %>">
+  <strong><%= "#{neighborhood_list_item.name}"%></strong>
+  <%= "#{neighborhood_list_item.city}, #{neighborhood_list_item.state}" %>
+  <%= membership_button_for neighborhood_list_item %>
 </li>

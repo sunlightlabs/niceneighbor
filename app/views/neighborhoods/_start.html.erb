@@ -1,0 +1,8 @@
+<% if @neighborhoods %>
+<h2>Join your neighbors</h2>
+<p>NiceNeighbor has already connected people in neighborhoods near you. Join as many as you like, and if yours isn't here, feel free to create it!</p>
+<ul>
+  <%= render(:partial => 'neighborhoods/neighborhood_list_item', :collection => @neighborhoods) || raw("<li class='empty'>No neighborhoods found in #{@location}</li>") %>
+</ul>
+  <%= render 'neighborhoods/new_neighborhood_form' %>
+<% end %>
